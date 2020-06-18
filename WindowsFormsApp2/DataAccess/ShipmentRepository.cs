@@ -19,13 +19,13 @@ namespace ShipmentTableApp.Model
             if (dataset == null || dataset.Tables.Count <= 0) return null;
 
             var result = DataTableToShipmentList(dataset.Tables[0]);
-
             return result;
         }
 
         public IEnumerable<Shipment> GetGroupedShipments(string[] columnNames)
         {
-            if (columnNames == null) throw new ArgumentNullException(nameof(columnNames));
+            if (columnNames == null || columnNames.Length == 0) 
+                throw new ArgumentException("Value can not be null or empty!", nameof(columnNames));
 
             var cols = string.Join(",", columnNames);
             var query = $"SELECT {cols}, SUM(quantity) as Quantity, SUM(total) as Total FROM shipment GROUP BY {cols}";
@@ -84,7 +84,7 @@ namespace ShipmentTableApp.Model
             }
             catch (SqlException ex)
             {
-                // log
+                Console.WriteLine($"[Error] DB connection failed: {ex.Message}");
                 throw ex;
             }
         }

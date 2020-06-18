@@ -49,10 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BindableListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Common\ExtensionBindableListView.cs" />
     <Compile Include="Common\ExtensionGridView.cs" />
     <Compile Include="DataAccess\IShipmentRepository.cs" />
     <Compile Include="Model\Shipment.cs" />

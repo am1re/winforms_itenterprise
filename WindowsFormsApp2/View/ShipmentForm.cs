@@ -18,16 +18,12 @@ namespace ShipmentTableApp
 {
     public partial class ShipmentForm : MaterialForm, IShipmentView
     {
+        private readonly HashSet<string> _selectedColumns = new HashSet<string>();
+
         public IEnumerable<Shipment> Shipments
         {
-            get => (IEnumerable<Shipment>)dataGridView1.DataSource;
-            set
-            {
-                dataGridView1.DataSource = value?.ToList() ?? dataGridView1.DataSource;
-                //materialListView1.D = value?.ToList() ?? dataGridView1.DataSource;
-                //bindableListView1.DataSource = value?.ToList() ?? dataGridView1.DataSource;
-                //dataListView1.DataSource = value?.ToList() ?? dataGridView1.DataSource;
-            }
+            get => (IEnumerable<Shipment>)MainGridView.DataSource;
+            set => MainGridView.DataSource = value?.ToList() ?? MainGridView.DataSource;
         }
         public ShipmentPresenter Presenter { private get; set; }
 
@@ -38,7 +34,6 @@ namespace ShipmentTableApp
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.LightBlue800, 
                 Primary.LightBlue900, 
@@ -46,29 +41,42 @@ namespace ShipmentTableApp
                 Accent.LightBlue200, 
                 TextShade.WHITE);
 
-
-            dataGridView1.DataSourceChanged += (s, e) => dataGridView1.RemoveEmptyColumns();
-            //bindableListView1.DataSourceChanged += (s, e) => bindableListView1.RemoveEmptyColumns();
-        }
-
-        private void MaterialFlatButton1_Click(object sender, EventArgs e)
-        {
-            Presenter.UpdateShipmentDataView();
-        }
-
-        private void materialFlatButton2_Click(object sender, EventArgs e)
-        {
-            Presenter.UpdateShipmentDataView2();
-        }
-
-        private void materialFlatButton3_Click(object sender, EventArgs e)
-        {
-            Presenter.UpdateShipmentDataView3();
+            MainGridView.DataSourceChanged += (s, e) => MainGridView.RemoveEmptyColumns();
         }
 
         public void ShowError(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            _selectedColumns.Clear();
+            SelectedColsTextField.ResetText();
+
+            Presenter.UpdateShipmentDataView();
+        }
+
+        private void MainGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var columnName = MainGridView.Columns[e.ColumnIndex].DataPropertyName;
+            if (_selectedColumns.Contains(columnName))
+            {
+                _selectedColumns.Remove(columnName);
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = new Font("Bahnschrift", 9.75f, FontStyle.Regular);
+            }
+            else 
+            {
+                _selectedColumns.Add(columnName);
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = new Font("Bahnschrift", 10.00f, FontStyle.Underline);
+            }
+
+            SelectedColsTextField.Text = string.Join(", ", _selectedColumns);
+        }
+
+        private void GroupButton_Click(object sender, EventArgs e)
+        {
+            Presenter.UpdateShipmentDataViewGrouped(_selectedColumns.ToArray());
         }
     }
 }
