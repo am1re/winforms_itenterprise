@@ -1,0 +1,12 @@
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\MaterialSkin.dll
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\ShipmentTableApp.ShipmentForm.resources
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\ShipmentTableApp.csproj.GenerateResource.cache
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\ShipmentTableApp.csproj.CoreCompileInputs.cache
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\ShipmentTableApp.csproj.CopyComplete
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\Amir_Abu_Shamala\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\ShipmentTableApp.csprojAssemblyReference.cache

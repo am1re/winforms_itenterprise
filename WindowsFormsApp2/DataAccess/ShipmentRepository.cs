@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp2.Model
+namespace ShipmentTableApp.Model
 {
     public class ShipmentRepository : IShipmentRepository
     {
@@ -25,6 +25,8 @@ namespace WindowsFormsApp2.Model
 
         public IEnumerable<Shipment> GetGroupedShipments(string[] columnNames)
         {
+            if (columnNames == null) throw new ArgumentNullException(nameof(columnNames));
+
             var cols = string.Join(",", columnNames);
             var query = $"SELECT {cols}, SUM(quantity) as Quantity, SUM(total) as Total FROM shipment GROUP BY {cols}";
 
@@ -64,7 +66,7 @@ namespace WindowsFormsApp2.Model
 
         private static DataSet ExecuteSqlQuery(string query)
         {
-            string connectionString = @"Server=localhost\SQLEXPRESS;Database=wwfdb1;Trusted_Connection=True;";
+            string connectionString = @"Server=localhost\SQLEXPRESS;Database=wfdb1;Trusted_Connection=True;";
 
             try
             {
@@ -80,12 +82,11 @@ namespace WindowsFormsApp2.Model
                     return dataSet;
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, "Error while connecting to DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // log
+                throw ex;
             }
-
-            return null;
         }
     }
 }

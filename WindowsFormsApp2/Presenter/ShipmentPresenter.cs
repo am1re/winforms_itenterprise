@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp2.Model;
-using WindowsFormsApp2.View;
+using ShipmentTableApp.Model;
+using ShipmentTableApp.View;
 
-namespace WindowsFormsApp2.Presenter
+namespace ShipmentTableApp.Presenter
 {
     public class ShipmentPresenter
     {
@@ -24,7 +24,15 @@ namespace WindowsFormsApp2.Presenter
 
         public void UpdateShipmentDataView()
         {
-            _view.Shipments = _repository.GetAllShipments();
+            try 
+            {
+                _view.Shipments = _repository.GetAllShipments();
+            }
+            catch (Exception ex)
+            {
+                _view.ShowError(ex.Message);
+            }
+            
             //var result = new List<Shipment> {
             //    new Shipment { Date = DateTime.Now, City="City1", Country="Country1", Manager="Manager1", Org="Org1", Quantity=100, Total=2000},
             //    new Shipment { Date = DateTime.Now, City="City2", Country="Country2", Manager="Manager2", Org="Org2", Quantity=100, Total=2000},

@@ -49,10 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BindableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ExtensionBindableListView.cs" />
     <Compile Include="Common\ExtensionGridView.cs" />
-    <Compile Include="Model\IShipmentRepository.cs" />
+    <Compile Include="DataAccess\IShipmentRepository.cs" />
     <Compile Include="Model\Shipment.cs" />
-    <Compile Include="Model\ShipmentRepository.cs" />
+    <Compile Include="DataAccess\ShipmentRepository.cs" />
     <Compile Include="Presenter\ShipmentPresenter.cs" />
     <Compile Include="View\ShipmentForm.cs">
       <SubType>Form</SubType>
@@ -89,6 +93,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

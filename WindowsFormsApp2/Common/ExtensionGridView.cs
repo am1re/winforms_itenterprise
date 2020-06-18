@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp2.Common
+namespace ShipmentTableApp.Common
 {
     public static class ExtensionGridView
     {
