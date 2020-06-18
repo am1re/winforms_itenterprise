@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.Model;
+using WindowsFormsApp2.Presenter;
 
 namespace WindowsFormsApp2
 {
@@ -16,7 +18,12 @@ namespace WindowsFormsApp2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShipmentForm());
+
+            var repository = new ShipmentRepository();
+            var view = new ShipmentForm();
+            var presenter = new ShipmentPresenter(view, repository);
+
+            Application.Run(view);
         }
     }
 }

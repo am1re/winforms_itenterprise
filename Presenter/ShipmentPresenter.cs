@@ -22,9 +22,26 @@ namespace WindowsFormsApp2.Presenter
             UpdateShipmentDataView();
         }
 
-        private void UpdateShipmentDataView()
+        public void UpdateShipmentDataView()
         {
-            _view.Shipments = _repository.GetAllShipments();
+            //_view.Shipments = _repository.GetAllShipments();
+            var result = new List<Shipment> {
+                new Shipment { Date = DateTime.Now, City="City1", Country="Country1", Manager="Manager1", Org="Org1", Quantity=100, Total=2000},
+                new Shipment { Date = DateTime.Now, City="City2", Country="Country2", Manager="Manager2", Org="Org2", Quantity=100, Total=2000},
+                new Shipment { Date = DateTime.Now, City="City3", Country="Country3", Manager="Manager3", Org="Org3", Quantity=100, Total=2000},
+            };
+            _view.Shipments = result;
+        }
+
+        public void UpdateShipmentDataView2()
+        {
+            //_view.Shipments = _repository.GetAllShipments();
+            var result = new List<Shipment> {
+                new Shipment { Date = DateTime.Now, Org="Org1", Quantity=100, Total=2000},
+                new Shipment { Date = DateTime.Now, Org="Org2", Quantity=100, Total=2000},
+                new Shipment { Date = DateTime.Now, Org="Org3", Quantity=100, Total=2000},
+            };
+            _view.Shipments = result;
         }
 
         //private void UpdateCustomerListView()

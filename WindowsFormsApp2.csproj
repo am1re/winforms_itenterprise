@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ExtensionGridView.cs" />
     <Compile Include="Model\IShipmentRepository.cs" />
     <Compile Include="Model\Shipment.cs" />
     <Compile Include="Model\ShipmentRepository.cs" />

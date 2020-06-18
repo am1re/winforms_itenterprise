@@ -10,7 +10,7 @@ namespace WindowsFormsApp2.Model
     {
         IEnumerable<Shipment> GetAllShipments();
         IEnumerable<Shipment> GetGroupedShipments(string[] columnNames);
-        Customer GetShipment(int id);
+        Shipment GetShipment(int id);
         void SaveShipment(int id, Shipment shipment);
     }
 }

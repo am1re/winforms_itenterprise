@@ -17,8 +17,9 @@ namespace WindowsFormsApp2.Model
 
         public IEnumerable<Shipment> GetAllShipments()
         {
-            DataSet ds = SqlQuery("SELECT *"); // TODO
-            var result = ds.Tables[0].AsEnumerable()
+            DataSet ds = SqlQuery("SELECT * FROM shipment");
+            var result = ds.Tables[0]
+                .AsEnumerable()
                 .Select(dataRow => new Shipment
                 {
                     Date = dataRow.Field<DateTime>("Date"),
@@ -28,7 +29,8 @@ namespace WindowsFormsApp2.Model
                     Manager = dataRow.Field<string>("Manager"),
                     Quantity = dataRow.Field<int>("Quantity"),
                     Total = dataRow.Field<double>("Total")
-                }).ToList();
+                })
+                .ToList();
 
             return result;
         }
@@ -38,7 +40,7 @@ namespace WindowsFormsApp2.Model
             throw new NotImplementedException();
         }
 
-        public Customer GetShipment(int id)
+        public Shipment GetShipment(int id)
         {
             throw new NotImplementedException();
         }
@@ -51,7 +53,7 @@ namespace WindowsFormsApp2.Model
         private DataSet SqlQuery(string query)
         {
             DataSet dataSet = null;
-            string connectionString = @"Server =.\SQL2K17; Database = SampleDB; Trusted_Connection = True;"; // TODO
+            string connectionString = @"Server=localhost\SQLEXPRESS;Database=wfdb1;Trusted_Connection=True;";
 
             try
             {
