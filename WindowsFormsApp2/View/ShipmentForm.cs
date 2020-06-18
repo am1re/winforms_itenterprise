@@ -14,9 +14,6 @@ namespace ShipmentTableApp
 {
     public partial class ShipmentForm : MaterialForm, IShipmentView
     {
-        private static readonly Font _regularFont = new Font("Bahnschrift", 9.75f, FontStyle.Regular);
-        private static readonly Font _highlightedFont = new Font("Bahnschrift", 10.00f, FontStyle.Underline);
-
         private readonly HashSet<string> _selectedColumns = new HashSet<string>();
 
         public ShipmentForm()
@@ -34,6 +31,8 @@ namespace ShipmentTableApp
                 TextShade.WHITE);
 
             MainGridView.DataSourceChanged += (s, e) => MainGridView.RemoveEmptyColumns();
+
+            MainGridView.EnableHeadersVisualStyles = false;
         }
 
         public IEnumerable<Shipment> Shipments
@@ -53,9 +52,9 @@ namespace ShipmentTableApp
         {
             for (int i = 0; i < MainGridView.Columns.Count; i++)
             {
-                MainGridView.Columns[i].HeaderCell.Style.Font = _regularFont;
+                MainGridView.Columns[i].HeaderCell.Style.ForeColor = SystemColors.ControlText;
+                MainGridView.Columns[i].HeaderCell.Style.BackColor = Color.White;
             }
-            SelectedColsTextField.ResetText();
             _selectedColumns.Clear();
 
             Presenter.UpdateShipmentDataView();
@@ -70,15 +69,15 @@ namespace ShipmentTableApp
             if (_selectedColumns.Contains(columnName))
             {
                 _selectedColumns.Remove(columnName);
-                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = _regularFont;
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.ForeColor = SystemColors.ControlText;
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.BackColor = Color.White;
             }
             else 
             {
                 _selectedColumns.Add(columnName);
-                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = _highlightedFont;
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.ForeColor = Color.White;
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.BackColor = Color.FromArgb(50, 144, 201);
             }
-
-            SelectedColsTextField.Text = string.Join(", ", _selectedColumns);
         }
 
         private void GroupButton_Click(object sender, EventArgs e)

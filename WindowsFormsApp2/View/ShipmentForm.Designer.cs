@@ -30,8 +30,8 @@ namespace ShipmentTableApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ResetButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.MainGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,6 @@ namespace ShipmentTableApp
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.SelectedColsTextField = new MaterialSkin.Controls.MaterialSingleLineTextField();
             ((System.ComponentModel.ISupportInitialize)(this.MainGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,14 +72,14 @@ namespace ShipmentTableApp
             this.MainGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.MainGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.MainGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MainGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MainGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.MainGridView.ColumnHeadersHeight = 40;
             this.MainGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.MainGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -91,14 +90,15 @@ namespace ShipmentTableApp
             this.Manager,
             this.Quantity,
             this.Total});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MainGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MainGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.MainGridView.EnableHeadersVisualStyles = false;
             this.MainGridView.GridColor = System.Drawing.SystemColors.Control;
             this.MainGridView.Location = new System.Drawing.Point(1, 64);
             this.MainGridView.MultiSelect = false;
@@ -108,7 +108,7 @@ namespace ShipmentTableApp
             this.MainGridView.RowHeadersVisible = false;
             this.MainGridView.RowTemplate.Height = 40;
             this.MainGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.MainGridView.Size = new System.Drawing.Size(700, 314);
+            this.MainGridView.Size = new System.Drawing.Size(720, 314);
             this.MainGridView.TabIndex = 4;
             this.MainGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MainGridView_ColumnHeaderMouseClick);
             // 
@@ -170,31 +170,11 @@ namespace ShipmentTableApp
             this.GroupButton.UseVisualStyleBackColor = true;
             this.GroupButton.Click += new System.EventHandler(this.GroupButton_Click);
             // 
-            // SelectedColsTextField
-            // 
-            this.SelectedColsTextField.Depth = 0;
-            this.SelectedColsTextField.Enabled = false;
-            this.SelectedColsTextField.Hint = "";
-            this.SelectedColsTextField.Location = new System.Drawing.Point(12, 400);
-            this.SelectedColsTextField.MaxLength = 32767;
-            this.SelectedColsTextField.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SelectedColsTextField.Name = "SelectedColsTextField";
-            this.SelectedColsTextField.PasswordChar = '\0';
-            this.SelectedColsTextField.SelectedText = "";
-            this.SelectedColsTextField.SelectionLength = 0;
-            this.SelectedColsTextField.SelectionStart = 0;
-            this.SelectedColsTextField.Size = new System.Drawing.Size(516, 23);
-            this.SelectedColsTextField.TabIndex = 9;
-            this.SelectedColsTextField.TabStop = false;
-            this.SelectedColsTextField.Text = "Click on columns title to select fields :)";
-            this.SelectedColsTextField.UseSystemPasswordChar = false;
-            // 
             // ShipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 450);
-            this.Controls.Add(this.SelectedColsTextField);
+            this.ClientSize = new System.Drawing.Size(728, 450);
             this.Controls.Add(this.GroupButton);
             this.Controls.Add(this.MainGridView);
             this.Controls.Add(this.ResetButton);
@@ -217,7 +197,6 @@ namespace ShipmentTableApp
         private DataGridViewTextBoxColumn Manager;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Total;
-        private MaterialSkin.Controls.MaterialSingleLineTextField SelectedColsTextField;
     }
 }
 

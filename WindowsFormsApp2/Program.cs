@@ -32,6 +32,7 @@ namespace ShipmentTableApp
             ShowExceptionDetails(e.Exception);
         }
 
+        [Obsolete]
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             ShowExceptionDetails(e.ExceptionObject as Exception);
@@ -40,7 +41,6 @@ namespace ShipmentTableApp
 
         static void ShowExceptionDetails(Exception Ex)
         {
-            // Log
             MessageBox.Show(Ex.Message, "Oops.. Unhandled exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
