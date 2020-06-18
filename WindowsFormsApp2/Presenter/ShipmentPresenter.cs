@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShipmentTableApp.Model;
 using ShipmentTableApp.View;
 
@@ -24,7 +20,7 @@ namespace ShipmentTableApp.Presenter
 
         public void UpdateShipmentDataView()
         {
-            try 
+            try
             {
                 _view.Shipments = _repository.GetAllShipments();
             }
@@ -51,4 +47,5 @@ namespace ShipmentTableApp.Presenter
                 _view.ShowError(ex.Message);
             }
         }
+    }
 }

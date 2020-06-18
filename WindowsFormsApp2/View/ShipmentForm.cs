@@ -2,12 +2,8 @@
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ShipmentTableApp.Common;
 using ShipmentTableApp.Model;
@@ -18,14 +14,10 @@ namespace ShipmentTableApp
 {
     public partial class ShipmentForm : MaterialForm, IShipmentView
     {
-        private readonly HashSet<string> _selectedColumns = new HashSet<string>();
+        private static readonly Font _regularFont = new Font("Bahnschrift", 9.75f, FontStyle.Regular);
+        private static readonly Font _highlightedFont = new Font("Bahnschrift", 10.00f, FontStyle.Underline);
 
-        public IEnumerable<Shipment> Shipments
-        {
-            get => (IEnumerable<Shipment>)MainGridView.DataSource;
-            set => MainGridView.DataSource = value?.ToList() ?? MainGridView.DataSource;
-        }
-        public ShipmentPresenter Presenter { private get; set; }
+        private readonly HashSet<string> _selectedColumns = new HashSet<string>();
 
         public ShipmentForm()
         {
@@ -35,14 +27,22 @@ namespace ShipmentTableApp
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.LightBlue800, 
-                Primary.LightBlue900, 
-                Primary.LightBlue500, 
-                Accent.LightBlue200, 
+                Primary.LightBlue800,
+                Primary.LightBlue900,
+                Primary.LightBlue500,
+                Accent.LightBlue200,
                 TextShade.WHITE);
 
             MainGridView.DataSourceChanged += (s, e) => MainGridView.RemoveEmptyColumns();
         }
+
+        public IEnumerable<Shipment> Shipments
+        {
+            get => (IEnumerable<Shipment>)MainGridView.DataSource;
+            set => MainGridView.DataSource = value?.ToList() ?? MainGridView.DataSource;
+        }
+
+        public ShipmentPresenter Presenter { private get; set; }
 
         public void ShowError(string message)
         {
@@ -51,8 +51,12 @@ namespace ShipmentTableApp
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            _selectedColumns.Clear();
+            for (int i = 0; i < MainGridView.Columns.Count; i++)
+            {
+                MainGridView.Columns[i].HeaderCell.Style.Font = _regularFont;
+            }
             SelectedColsTextField.ResetText();
+            _selectedColumns.Clear();
 
             Presenter.UpdateShipmentDataView();
         }
@@ -60,15 +64,18 @@ namespace ShipmentTableApp
         private void MainGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var columnName = MainGridView.Columns[e.ColumnIndex].DataPropertyName;
+
+            if (columnName == "Total" || columnName == "Quantity") return;
+
             if (_selectedColumns.Contains(columnName))
             {
                 _selectedColumns.Remove(columnName);
-                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = new Font("Bahnschrift", 9.75f, FontStyle.Regular);
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = _regularFont;
             }
             else 
             {
                 _selectedColumns.Add(columnName);
-                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = new Font("Bahnschrift", 10.00f, FontStyle.Underline);
+                MainGridView.Columns[e.ColumnIndex].HeaderCell.Style.Font = _highlightedFont;
             }
 
             SelectedColsTextField.Text = string.Join(", ", _selectedColumns);
