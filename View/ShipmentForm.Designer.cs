@@ -34,6 +34,7 @@ namespace WindowsFormsApp2
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@ namespace WindowsFormsApp2
             this.materialCheckBox1.AutoSize = true;
             this.materialCheckBox1.Depth = 0;
             this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(415, 336);
+            this.materialCheckBox1.Location = new System.Drawing.Point(579, 332);
             this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -101,11 +102,29 @@ namespace WindowsFormsApp2
             this.materialFlatButton2.UseVisualStyleBackColor = true;
             this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
             // 
+            // materialFlatButton3
+            // 
+            this.materialFlatButton3.AutoSize = true;
+            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Depth = 0;
+            this.materialFlatButton3.Icon = null;
+            this.materialFlatButton3.Location = new System.Drawing.Point(310, 326);
+            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton3.Name = "materialFlatButton3";
+            this.materialFlatButton3.Primary = false;
+            this.materialFlatButton3.Size = new System.Drawing.Size(181, 36);
+            this.materialFlatButton3.TabIndex = 6;
+            this.materialFlatButton3.Text = "materialFlatButton3";
+            this.materialFlatButton3.UseVisualStyleBackColor = true;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            // 
             // ShipmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.materialFlatButton3);
             this.Controls.Add(this.materialFlatButton2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.materialFlatButton1);
@@ -123,6 +142,7 @@ namespace WindowsFormsApp2
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
     }
 }
 

@@ -21,7 +21,7 @@ namespace WindowsFormsApp2
         public IEnumerable<Shipment> Shipments
         {
             get => (IEnumerable<Shipment>)dataGridView1.DataSource;
-            set => dataGridView1.DataSource = value.ToList();
+            set => dataGridView1.DataSource = value?.ToList() ?? dataGridView1.DataSource;
         }
         public ShipmentPresenter Presenter { private get; set; }
 
@@ -45,6 +45,11 @@ namespace WindowsFormsApp2
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
             Presenter.UpdateShipmentDataView2();
+        }
+
+        private void materialFlatButton3_Click(object sender, EventArgs e)
+        {
+            Presenter.UpdateShipmentDataView3();
         }
     }
 }

@@ -11,8 +11,9 @@ namespace WindowsFormsApp2.Common
     {
         public static bool IsEmpty(this DataGridViewCell cell)
         {
-            var value = cell.Value;
-            return value == null || value == DBNull.Value || (value as string) == string.Empty;
+            var obj = cell.Value;
+            return obj == null || obj == DBNull.Value || (obj as string) == string.Empty ||
+                ((obj is DateTime time) && time == DateTime.MinValue) || ((obj is int val) && val == -1);
         }
         public static IEnumerable<DataGridViewColumn> EmptyColumns(this DataGridView gridView)
         {
